@@ -39,7 +39,6 @@ env:
 rules:
   # Possible Errors
   comma-dangle: [2, 'never']
-  no-console: 1
   no-control-regex: 2
   no-debugger: 1
   no-dupe-args: 2
@@ -134,7 +133,7 @@ rules:
   eol-last: 0
   func-names: 0
   func-style: [2, 'declaration']
-  indent: [2, 2]
+  indent: [2, 4]
   lines-around-comment: 0
   linebreak-style: [2, 'unix']
   key-spacing: [2, {beforeColon: false, afterColon: true}]
