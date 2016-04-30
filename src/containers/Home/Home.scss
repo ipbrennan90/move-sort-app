@@ -44,7 +44,7 @@
     color: white;
     font-size: 2em;
     margin: 20px;
-    text-shadow: 1px 4px 13px black; 
+    text-shadow: 1px 4px 13px black;
   }
   a {
     color: #ddd;
@@ -63,15 +63,35 @@
   }
 }
 
-.homeButtonContainer {
+.home-button-container {
   margin-top: 10em;
   text-align: center;
   margin: 20px;
 }
 
-.homeButton {
+.home-button {
     margin-left: 1em;
     margin-right: 1em;
     background-color: $move-sort-base;
     color: white;
+}
+.btn-primary {
+  display: inline-block;
+  height: 42px;
+  line-height: 42px;
+  vertical-align: baseline;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: $move-sort-base;
+  color: #FFFFFF;
+  border: none;
+  transition: background-color 300ms ease;
+  &:hover {
+    background-color: $move-sort-base;
+  }
+  &:focus { outline: none; }
+  &:disabled {
+    opacity: .3;
+    &:hover { background-color: black; }
+  }
 }

@@ -9,6 +9,6 @@ export default (
   <Route path='/' component={App}>
     <Route path='/about' component={About} />
     <Route path='/list' component={ListPage} />
-    <Route path='/home' conponent={Home} />
+    <Route path='/home' component={Home} />
   </Route>
 );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { CounterButton } from 'components';
-import config from '../../config';
 import Helmet from 'react-helmet';
+import './Home.scss';
 
 export default class Home extends Component {
   render() {
@@ -11,25 +10,25 @@ export default class Home extends Component {
     return (
       <div className={styles.home}>
         <Helmet title="Home"/>
-        <div className={styles.masthead}>
+        <div className="masthead">
           <div className="container">
-            <div className={styles.logo}>
+            <div className="logo">
               <p>
                 <img src={logoImage}/>
               </p>
             </div>
-            <h1>{config.app.title}</h1>
+            <h1>Move Sort</h1>
 
-            <h2>{config.app.description}</h2>
+            <h2>Description</h2>
 
-            <div className={styles.homeButtonContainer}>
-              <CounterButton buttonText="Home" className={styles.homeButton}/>
-              <CounterButton buttonText="Moving Home Tips" className={styles.homeButton}/>
-              <CounterButton buttonText="FAQs" className={styles.homeButton}/>
+            <div className="home-button-container">
+              <button className="btn-primary home-button">Home</button>
+              <button className="btn-primary home-button">Moving Home Tips</button>
+              <button className="btn-primary home-button">FAQs</button>
             </div>
           </div>
         </div>
-      </div>
+	</div>
     );
   }
 }
