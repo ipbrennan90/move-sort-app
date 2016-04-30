@@ -11,5 +11,5 @@ export default (
     <Route path='/about' component={About} />
     <Route path='/list' component={ListPage} />
     <Route path='/home' component={Home} />
-  </Route> 
+  </Route>
 );
