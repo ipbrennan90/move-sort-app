@@ -16,6 +16,10 @@ function list(state = initialState, action) {
         return {
             items: state.items.concat(action.item)
         };
+    case ActionTypes.SELECT_TAB:
+        return {
+            tab: action.tab
+        };
     default:
         return state;
     }
