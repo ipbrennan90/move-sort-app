@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import Pane from '../../components/Pane/Pane';
 import Tabs from '../../components/Tabs/Tabs';
+import Faq from '../../components/Faq/Faq';
 import './Home.scss';
 import { selectTab } from '../../actions/index';
 
@@ -74,19 +75,18 @@ class Home extends Component {
             </div>
             <Tabs selected={this.state.activeTab}>
                 <Pane label="Home">
-                    <div>this is the home tab</div>
+                    <div className="home-page-contents">
+                        {adminInputDiv}
+                        <div className="home-page-contents-container">
+                            <p onClick={this.toggleEdit}>{pageText}</p>
+                        </div>
+                    </div>
                 </Pane>
                 <Pane label="Moving Home Tips">
                     <div>this is the moving home tips tab</div>
                 </Pane>
                 <Pane label="FAQs">
-                    <div>
-                        <button>FAQ 1</button>
-                        <button>FAQ 2</button>
-                        <button>FAQ 3</button>
-                        <button>FAQ 4</button>
-                    </div>
-                    <div
+                    <Faq />
                     <div>this is the FAQ tab</div>
                 </Pane>
             </Tabs>
