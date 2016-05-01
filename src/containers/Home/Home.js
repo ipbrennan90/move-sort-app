@@ -43,7 +43,7 @@ export default class Home extends Component {
                 </div>
                 <h1>Move Sort</h1>
 
-                <h2>Description</h2>
+                <h2>Sorting Your Move For You</h2>
 
                 <div className="home-button-container">
                   <button className="btn-primary home-button">Home</button>
@@ -52,13 +52,13 @@ export default class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="page-contents">
+            <div className="home-page-contents">
                 {adminInputDiv}
-                <div className="page-contents-container">
+                <div className="home-page-contents-container">
                     <p onClick={this.toggleEdit}>{pageText}</p>
                 </div>
-
             </div>
+
         </div>
     );
     }

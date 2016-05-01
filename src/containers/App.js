@@ -4,23 +4,23 @@ import { connect, pushState } from 'react-redux';
 import '../assets/stylesheets/base.scss';
 
 const App = React.createClass({
-  displayName: 'App',
+    displayName: 'App',
 
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  },
+    render() {
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        );
+    },
 
-  propTypes: {
-    children: PropTypes.object.isRequired
-  }
+    propTypes: {
+        children: PropTypes.object.isRequired
+    }
 });
 
 function select(state) {
-  return state;
+    return state;
 }
 
 export default connect(select, { pushState })(App);
