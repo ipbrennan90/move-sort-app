@@ -99,10 +99,7 @@ Home.propTypes = {
     children: React.PropTypes.oneOfType([
         React.PropTypes.array,
         React.PropTypes.element
-    ])
-};
-
-Home.propTypes = {
+    ]),
     dispatch: React.PropTypes.func.isRequired,
     tab: React.PropTypes.number
 };
