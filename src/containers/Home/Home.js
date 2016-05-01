@@ -54,7 +54,7 @@ class Home extends Component {
         return (
           <div className={styles.home}>
             <Helmet title="Home"/>
-            <div className="masthead">
+            <div className="masthead">  
               <div className="container">
                 <div className="logo">
                   <p>
