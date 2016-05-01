@@ -74,7 +74,12 @@ class Home extends Component {
             </div>
             <Tabs selected={this.state.activeTab}>
                 <Pane label="Home">
-                    <div>this is the home tab</div>
+                    <div className="home-page-contents">
+                        {adminInputDiv}
+                        <div className="home-page-contents-container">
+                            <p onClick={this.toggleEdit}>{pageText}</p>
+                        </div>
+                    </div>
                 </Pane>
                 <Pane label="Moving Home Tips">
                     <div>this is the moving home tips tab</div>
@@ -83,12 +88,7 @@ class Home extends Component {
                     <div>this is the FAQ tab</div>
                 </Pane>
             </Tabs>
-            <div className="home-page-contents">
-                {adminInputDiv}
-                <div className="home-page-contents-container">
-                    <p onClick={this.toggleEdit}>{pageText}</p>
-                </div>
-            </div>
+
 
         </div>
         );
