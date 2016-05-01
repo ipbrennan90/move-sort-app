@@ -54,7 +54,7 @@ class Home extends Component {
         return (
           <div className={styles.home}>
             <Helmet title="Home"/>
-            <div className="masthead">  
+            <div className="masthead">
               <div className="container">
                 <div className="logo">
                   <p>
@@ -80,16 +80,16 @@ class Home extends Component {
                     <div>this is the moving home tips tab</div>
                 </Pane>
                 <Pane label="FAQs">
+                    <div>
+                        <button>FAQ 1</button>
+                        <button>FAQ 2</button>
+                        <button>FAQ 3</button>
+                        <button>FAQ 4</button>
+                    </div>
+                    <div
                     <div>this is the FAQ tab</div>
                 </Pane>
             </Tabs>
-            <div className="home-page-contents">
-                {adminInputDiv}
-                <div className="home-page-contents-container">
-                    <p onClick={this.toggleEdit}>{pageText}</p>
-                </div>
-            </div>
-
         </div>
         );
     }
