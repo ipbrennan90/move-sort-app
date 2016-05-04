@@ -8,7 +8,6 @@ class Faq extends Component {
         // this._renderContent = this._renderContent.bind(this);
         this._renderFaq = this._renderFaq.bind(this);
         this.editPage = this.editPage.bind(this);
-		console.log('weinerz');
         this.state = {
             activeFaq: 0,
             pageText: this.props.faqs ? this.props.faqs[0].content : 'These are our frequently asked questions, pick one from the left to view',
