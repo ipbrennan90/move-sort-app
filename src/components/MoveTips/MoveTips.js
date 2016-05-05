@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setFaqs } from '../../actions/index';
-require('./Faq.scss');
+import { setTips } from '../../actions/index';
+require('./MoveTips.scss');
 
-class Faq extends Component {
+class MoveTips extends Component {
     constructor(props) {
         super(props);
         // this._renderContent = this._renderContent.bind(this);
-        this._renderFaq = this._renderFaq.bind(this);
+        this._renderTip = this._renderTip.bind(this);
         this.editPage = this.editPage.bind(this);
         this.state = {
-            activeFaq: 0,
-            pageText: this.props.faqs
-                ? this.props.faqs[0].content
+            activeTip: 0,
+            pageText: this.props.tips
+                ? this.props.tips[0].content
                 : 'These are our frequently asked questions, pick one from the left to view',
             adminEditing: false,
-            frequentQuestions: [
+            movingTips: [
                 {
                     key: 1,
+                    title: 'Moving Tip 1',
                     name: 'FAQ 1',
                     content: 'this is faq 1, click on my text to edit me'
                 }, {
@@ -51,15 +52,15 @@ class Faq extends Component {
                 }
             ]
         };
-        if (this.props.faqs) {
-            this.state.pageText = this.props.faqs[0].content;
+        if (this.props.tips) {
+            this.state.pageText = this.props.tips[0].content;
         }
         // console.log(this.state);
     }
 
     changeTab(index, event) {
         event.preventDefault();
-        this.setState({ activeFaq: index, pageText: this.state.frequentQuestions[index].content });
+        this.setState({ activeFaq: index, pageText: this.state.movingTips[index].content });
     }
 
     editPage(event) {
@@ -67,10 +68,10 @@ class Faq extends Component {
         console.log(this.state);
     }
 
-    _renderFaq() {
-        const frequentQuestions = this.props.faqs
-            ? this.props.faqs
-            : this.state.frequentQuestions;
+    _renderTip() {
+        const movingTips = this.props.tips
+            ? this.props.tips
+            : this.state.movingTips;
         function buttons(child, index) {
             return (
                 <div key={index}>
@@ -82,7 +83,7 @@ class Faq extends Component {
         }
         return (
             <div>
-                {frequentQuestions.map(buttons.bind(this))}
+                {movingTips.map(buttons.bind(this))}
             </div>
         );
     }
@@ -95,8 +96,8 @@ class Faq extends Component {
         });
         if (this.state.adminEditing) {
             console.log('here');
-            this.state.frequentQuestions[this.state.activeFaq].content = this.state.pageText;
-            this.props.dispatch(setFaqs(this.state.frequentQuestions));
+            this.state.movingTips[this.state.activeTip].content = this.state.pageText;
+            this.props.dispatch(setTips(this.state.movingTips));
         }
     }
 
@@ -109,7 +110,7 @@ class Faq extends Component {
             <div>
                 <div className="container">
                     <div className="faq-tab-buttons">
-                        {this._renderFaq()}
+                        {this._renderTip()}
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
@@ -123,14 +124,14 @@ class Faq extends Component {
     }
 }
 
-Faq.propTypes = {
+MoveTips.propTypes = {
     children: React.PropTypes.element,
     dispatch: React.PropTypes.func,
-    faqs: React.PropTypes.array
+    tips: React.PropTypes.array
 };
 
 function mapStateToProps(state) {
-    return { faqs: state.list.faqs };
+    return { tips: state.list.tips };
 }
 
-export default connect(mapStateToProps)(Faq);
+export default connect(mapStateToProps)(MoveTips);

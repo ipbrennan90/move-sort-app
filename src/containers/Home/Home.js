@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Pane from '../../components/Pane/Pane';
 import Tabs from '../../components/Tabs/Tabs';
 import Faq from '../../components/Faq/Faq';
+import MoveTips from '../../components/MoveTips/MoveTips';
 import './Home.scss';
 import { selectTab } from '../../actions/index';
 
@@ -83,11 +84,10 @@ class Home extends Component {
                     </div>
                 </Pane>
                 <Pane label="Moving Home Tips">
-                    <div>this is the moving home tips tab</div>
+                    <MoveTips />
                 </Pane>
                 <Pane label="FAQs">
                     <Faq />
-                    <div>this is the FAQ tab</div>
                 </Pane>
             </Tabs>
         </div>
