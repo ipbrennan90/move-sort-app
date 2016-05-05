@@ -8,13 +8,16 @@ class MoveTips extends Component {
         super(props);
         // this._renderContent = this._renderContent.bind(this);
         this._renderTip = this._renderTip.bind(this);
+        this._renderAdminInput = this._renderAdminInput.bind(this);
         this.editPage = this.editPage.bind(this);
+        this.addNewMovingTip = this.addNewMovingTip.bind(this);
         this.state = {
             activeTip: 0,
             pageText: this.props.tips
                 ? this.props.tips[0].content
                 : 'These are our frequently asked questions, pick one from the left to view',
             adminEditing: false,
+            addTip: false,
             movingTips: [
                 {
                     key: 1,
@@ -88,6 +91,31 @@ class MoveTips extends Component {
         );
     }
 
+    _renderAdminInput(pageText) {
+        if (this.state.adminEditing) {
+            return (
+                <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
+            );
+        } else if (this.state.addTip) {
+            return (
+                <div>
+                    <input type="text" ref="tipTitle"></input>
+                    <input type="date" ref="tipDate"></input>
+                    <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
+                    <button>Submit New Tip</button>
+                </div>
+
+            );
+        }
+        return '';
+    }
+
+    addNewMovingTip(event) {
+        event.preventDefault();
+        console.log('adding tip');
+        this.setState({ adminEditing: false, addTip: true });
+    }
+
     toggleEdit(event) {
         event.preventDefault();
         console.log('here setting adminEditing');
@@ -103,14 +131,13 @@ class MoveTips extends Component {
 
     render() {
         const pageText = this.state.pageText;
-        const adminInputDiv = this.state.adminEditing
-            ? <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
-            : '';
+        const adminInputDiv = this._renderAdminInput(pageText);
         return (
             <div>
                 <div className="container">
                     <div className="faq-tab-buttons">
                         {this._renderTip()}
+						<button onClick={this.addNewMovingTip}>Add Tip</button>
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
