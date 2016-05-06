@@ -11,6 +11,7 @@ class MoveTips extends Component {
         this._renderAdminInput = this._renderAdminInput.bind(this);
         this.editPage = this.editPage.bind(this);
         this.addNewMovingTip = this.addNewMovingTip.bind(this);
+        this.createNewTip = this.createNewTip.bind(this);
         this.state = {
             activeTip: 0,
             pageText: this.props.tips
@@ -99,10 +100,10 @@ class MoveTips extends Component {
         } else if (this.state.addTip) {
             return (
                 <div>
-                    <input type="text" ref="tipTitle"></input>
+                    <input className='admin-edit-text title' placeholder="Enter Title" type="text" ref="tipTitle"></input>
                     <input type="date" ref="tipDate"></input>
-                    <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
-                    <button>Submit New Tip</button>
+                    <textarea placeholder="Enter your movingt tip content here" ref="tipContents" className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
+                    <button onClick={this.createNewTip} className="faq-button">Submit New Tip</button>
                 </div>
 
             );
@@ -112,8 +113,10 @@ class MoveTips extends Component {
 
     addNewMovingTip(event) {
         event.preventDefault();
-        console.log('adding tip');
-        this.setState({ adminEditing: false, addTip: true });
+        this.setState({
+            adminEditing: false,
+            addTip: true
+        });
     }
 
     toggleEdit(event) {
@@ -129,19 +132,30 @@ class MoveTips extends Component {
         }
     }
 
+    createNewTip(event) {
+        event.preventDefault();
+        const newTip = {
+            title: this.refs.tipTitle.value,
+            date: this.refs.tipDate.value,
+            contents: this.refs.tipContents.value
+        };
+        this.props.dispatch(setTips(this.state.movingTips));
+    }
+
     render() {
         const pageText = this.state.pageText;
         const adminInputDiv = this._renderAdminInput(pageText);
+        const homePageContentsStyle = this.state.addTip ? 'hidden' : 'home-page-contents-container faq visible';
         return (
             <div>
                 <div className="container">
                     <div className="faq-tab-buttons">
                         {this._renderTip()}
-						<button onClick={this.addNewMovingTip}>Add Tip</button>
+						<button className="faq-button" onClick={this.addNewMovingTip}>Add Tip</button>
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
-                        <div className="home-page-contents-container faq">
+                        <div className={homePageContentsStyle}>
                             <p onClick={this.toggleEdit.bind(this)}>{pageText}</p>
                         </div>
                     </div>
@@ -154,6 +168,7 @@ class MoveTips extends Component {
 MoveTips.propTypes = {
     children: React.PropTypes.element,
     dispatch: React.PropTypes.func,
+    setTips: React.PropTypes.func,
     tips: React.PropTypes.array
 };
 
