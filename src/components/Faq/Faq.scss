@@ -5,6 +5,9 @@
 	border-radius: 4px;
 	margin-bottom: 2px;
 	height: 2.5em;
+    &:hover {
+      background-color: #00746d;
+    }
 }
 
 .home-page-contents.faq {
