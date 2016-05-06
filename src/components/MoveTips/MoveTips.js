@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setTips } from '../../actions/index';
+// import { setTips } from '../../actions/index';
 require('./MoveTips.scss');
 
 class MoveTips extends Component {
@@ -12,6 +12,7 @@ class MoveTips extends Component {
         this.editPage = this.editPage.bind(this);
         this.addNewMovingTip = this.addNewMovingTip.bind(this);
         this.createNewTip = this.createNewTip.bind(this);
+        this.saveTip = this.saveTip.bind(this);
         this.state = {
             activeTip: 0,
             pageText: this.props.tips
@@ -21,37 +22,36 @@ class MoveTips extends Component {
             addTip: false,
             movingTips: [
                 {
-                    key: 1,
-                    title: 'Moving Tip 1',
-                    name: 'FAQ 1',
+                    name: 'Move a fridge',
+                    date: '2015-05-30',
                     content: 'this is faq 1, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 3',
+                    name: 'Move a Piano',
+                    date: '2015-05-30',
                     content: 'this is faq 3, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 4',
+                    name: 'Move an Animal',
+                    date: '2015-05-30',
                     content: 'this is faq 4, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 5',
+                    name: 'Move your Parents',
+                    date: '2015-05-30',
                     content: 'this is faq 5, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 6',
+                    name: 'Move your girlfriend',
+                    date: '2015-05-30',
                     content: 'this is faq 6, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 7',
+                    name: 'Move Nice Furniture',
+                    date: '2015-05-30',
                     content: 'this is faq 7, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 8',
+                    name: 'Move an automobile',
+                    date: '2015-05-30',
                     content: 'this is faq 8, click on my text to edit me'
                 }, {
-                    key: 2,
-                    name: 'FAQ 9',
+                    name: 'Move a road bike',
+                    date: '2015-05-30',
                     content: 'this is faq 9, click on my text to edit me'
                 }
             ]
@@ -64,7 +64,7 @@ class MoveTips extends Component {
 
     changeTab(index, event) {
         event.preventDefault();
-        this.setState({ activeFaq: index, pageText: this.state.movingTips[index].content });
+        this.setState({ activeTip: index, addTip: false, pageText: this.state.movingTips[index].content });
     }
 
     editPage(event) {
@@ -73,9 +73,8 @@ class MoveTips extends Component {
     }
 
     _renderTip() {
-        const movingTips = this.props.tips
-            ? this.props.tips
-            : this.state.movingTips;
+        const movingTips = this.state.movingTips;
+        console.log(movingTips);
         function buttons(child, index) {
             return (
                 <div key={index}>
@@ -95,12 +94,17 @@ class MoveTips extends Component {
     _renderAdminInput(pageText) {
         if (this.state.adminEditing) {
             return (
-                <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
+                <div>
+                    <input className='admin-edit-text title' placeholder="Enter Title" type="text" ref="tipName"></input>
+                    <input type="date" ref="tipDate"></input>
+                    <textarea value={pageText} className='admin-edit-text' onChange={this.editPage} ref="tipContent" rows="20"></textarea>
+                    <button onClick={this.saveTip} className="faq-button">Save Moving Tip</button>
+                </div>
             );
         } else if (this.state.addTip) {
             return (
                 <div>
-                    <input className='admin-edit-text title' placeholder="Enter Title" type="text" ref="tipTitle"></input>
+                    <input className='admin-edit-text title' placeholder="Enter Title" type="text" ref="tipName"></input>
                     <input type="date" ref="tipDate"></input>
                     <textarea placeholder="Enter your movingt tip content here" ref="tipContents" className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
                     <button onClick={this.createNewTip} className="faq-button">Submit New Tip</button>
@@ -121,31 +125,35 @@ class MoveTips extends Component {
 
     toggleEdit(event) {
         event.preventDefault();
-        console.log('here setting adminEditing');
         this.setState({
             adminEditing: !this.state.adminEditing
         });
-        if (this.state.adminEditing) {
-            console.log('here');
-            this.state.movingTips[this.state.activeTip].content = this.state.pageText;
-            this.props.dispatch(setTips(this.state.movingTips));
-        }
     }
 
     createNewTip(event) {
         event.preventDefault();
         const newTip = {
-            title: this.refs.tipTitle.value,
+            name: this.refs.tipName.value,
             date: this.refs.tipDate.value,
             contents: this.refs.tipContents.value
         };
-        this.props.dispatch(setTips(this.state.movingTips));
+        this.setState({ movingTips: [...this.state.movingTips, newTip], addTip: false });
+    }
+
+    saveTip(event) {
+        event.preventDefault();
+        const tip = this.state.movingTips[this.state.activeTip];
+        console.log(tip);
+        tip.content = this.refs.tipContent.value;
+        tip.name = this.refs.tipName.value;
+        tip.date = this.refs.tipDate.value;
+        this.setState({ movingTips: this.state.movingTips, adminEditing: false });
     }
 
     render() {
         const pageText = this.state.pageText;
         const adminInputDiv = this._renderAdminInput(pageText);
-        const homePageContentsStyle = this.state.addTip ? 'hidden' : 'home-page-contents-container faq visible';
+        const homePageContentsStyle = this.state.addTip || this.state.adminEditing ? 'hidden' : 'home-page-contents-container faq visible';
         return (
             <div>
                 <div className="container">
