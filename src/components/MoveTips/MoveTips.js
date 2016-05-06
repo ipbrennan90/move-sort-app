@@ -24,35 +24,35 @@ class MoveTips extends Component {
                 {
                     name: 'Move a fridge',
                     date: '2015-05-30',
-                    content: 'this is faq 1, click on my text to edit me'
+                    content: 'this is moving tip 1, click on my text to edit me'
                 }, {
                     name: 'Move a Piano',
                     date: '2015-05-30',
-                    content: 'this is faq 3, click on my text to edit me'
+                    content: 'this is moving tip 3, click on my text to edit me'
                 }, {
                     name: 'Move an Animal',
                     date: '2015-05-30',
-                    content: 'this is faq 4, click on my text to edit me'
+                    content: 'this is moving tip 4, click on my text to edit me'
                 }, {
                     name: 'Move your Parents',
                     date: '2015-05-30',
-                    content: 'this is faq 5, click on my text to edit me'
+                    content: 'this is moving tip 5, click on my text to edit me'
                 }, {
                     name: 'Move your girlfriend',
                     date: '2015-05-30',
-                    content: 'this is faq 6, click on my text to edit me'
+                    content: 'this is moving tip 6, click on my text to edit me'
                 }, {
                     name: 'Move Nice Furniture',
                     date: '2015-05-30',
-                    content: 'this is faq 7, click on my text to edit me'
+                    content: 'this is moving tip 7, click on my text to edit me'
                 }, {
                     name: 'Move an automobile',
                     date: '2015-05-30',
-                    content: 'this is faq 8, click on my text to edit me'
+                    content: 'this is moving tip 8, click on my text to edit me'
                 }, {
                     name: 'Move a road bike',
                     date: '2015-05-30',
-                    content: 'this is faq 9, click on my text to edit me'
+                    content: 'this is moving tip 9, click on my text to edit me'
                 }
             ]
         };
@@ -65,7 +65,9 @@ class MoveTips extends Component {
     changeTab(index, event) {
         event.preventDefault();
         this.setState({
-            activeTip: index, addTip: false,
+            activeTip: index,
+            addTip: false,
+            adminEditing: false,
             pageText: this.state.movingTips[index].content,
             pageTitle: this.state.movingTips[index].name,
             pageDate: this.state.movingTips[index].date
@@ -143,6 +145,8 @@ class MoveTips extends Component {
             content: this.refs.tipContents.value
         };
         this.setState({ movingTips: [...this.state.movingTips, newTip], addTip: false });
+        const newTipIndex = this.state.movingTips.length - 1;
+        this.setState({ activeTip: newTipIndex });
     }
 
     saveTip(event) {
@@ -161,6 +165,7 @@ class MoveTips extends Component {
         const pageDate = this.state.pageDate;
         const adminInputDiv = this._renderAdminInput(pageText);
         const homePageContentsStyle = this.state.addTip || this.state.adminEditing ? 'hidden' : 'home-page-contents-container faq visible';
+        const hidableContents = this.state.addTip || this.state.adminEditing ? 'hidden' : 'visible';
         return (
             <div>
                 <div className="container">
@@ -170,8 +175,8 @@ class MoveTips extends Component {
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
-                        <h3>{pageTitle}</h3>
-                        <p>{pageDate}</p>
+                        <h3 className={hidableContents}>{pageTitle}</h3>
+                        <p className={hidableContents}>{pageDate}</p>
                         <div className={homePageContentsStyle}>
                             <p onClick={this.toggleEdit.bind(this)}>{pageText}</p>
                         </div>
