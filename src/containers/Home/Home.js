@@ -80,7 +80,7 @@ class Home extends Component {
                     <div className="home-page-contents">
                         {adminInputDiv}
                         <h2 style={{ 'text-align': 'center' }}>Welcome to MoveSort</h2>
-                        <div className="home-page-contents-container">
+                        <div className="home-page-contents-container" style={{ 'text-align': 'center' }}>
                             <p onClick={this.toggleEdit}>{pageText}</p>
                         </div>
                         <button className="faq-button" style={{ 'margin-top': '1em' }}>Start Move</button>
