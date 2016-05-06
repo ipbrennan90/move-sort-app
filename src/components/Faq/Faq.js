@@ -158,7 +158,7 @@ class Faq extends Component {
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
-                        <h3 className={hidableContents}>{pageTitle}</h3>
+                        <h3 className={hidableContents} style={{ 'text-align': 'center' }}>{pageTitle}</h3>
                         <div className={homePageContentsStyle}>
                             <p onClick={this.toggleEdit.bind(this)}>{pageText}</p>
                         </div>

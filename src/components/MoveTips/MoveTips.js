@@ -17,7 +17,8 @@ class MoveTips extends Component {
             activeTip: 0,
             pageText: this.props.tips
                 ? this.props.tips[0].content
-                : 'These are our frequently asked questions, pick one from the left to view',
+                : 'These are our moving tips, pick one from the left to view',
+            pageTitle: 'Moving Tips',
             adminEditing: false,
             addTip: false,
             movingTips: [
@@ -175,8 +176,8 @@ class MoveTips extends Component {
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
-                        <h3 className={hidableContents}>{pageTitle}</h3>
-                        <p className={hidableContents}>{pageDate}</p>
+                        <h3 className={hidableContents} style={{ 'text-align': 'center' }}>{pageTitle}</h3>
+                        <p className={hidableContents} style={{ 'text-align': 'center' }}>{pageDate}</p>
                         <div className={homePageContentsStyle}>
                             <p onClick={this.toggleEdit.bind(this)}>{pageText}</p>
                         </div>
