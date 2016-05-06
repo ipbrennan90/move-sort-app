@@ -20,7 +20,7 @@ class Tabs extends Component {
 
     _renderContent() {
         console.log(this.props.tab);
-        const selectedTab = this.props.tab;
+        const selectedTab = this.props.tab ? this.props.tab : 0;
         console.log(selectedTab);
         return (
             <div className="tabs-content">

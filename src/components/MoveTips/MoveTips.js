@@ -111,7 +111,7 @@ class MoveTips extends Component {
                 <div>
                     <input className='admin-edit-text title' placeholder="Enter Title" type="text" ref="tipName"></input>
                     <input type="date" ref="tipDate"></input>
-                    <textarea placeholder="Enter your movingt tip content here" ref="tipContents" className='admin-edit-text' onChange={this.editPage} rows="20"></textarea>
+                    <textarea placeholder="Enter your movingt tip content here" ref="tipContents" className='admin-edit-text' rows="20"></textarea>
                     <button onClick={this.createNewTip} className="faq-button">Submit New Tip</button>
                 </div>
 
@@ -140,7 +140,7 @@ class MoveTips extends Component {
         const newTip = {
             name: this.refs.tipName.value,
             date: this.refs.tipDate.value,
-            contents: this.refs.tipContents.value
+            content: this.refs.tipContents.value
         };
         this.setState({ movingTips: [...this.state.movingTips, newTip], addTip: false });
     }
