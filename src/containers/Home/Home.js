@@ -47,11 +47,12 @@ class Home extends Component {
         this.setState({ activeTab: this.tabs[tab] });
         console.log(this.state);
     }
+
     render() {
         const styles = require('./Home.scss');
         // require the logo image both from client and server
         const logoImage = require('./logo.png');
-        const pageText = this.state.pageText ? this.state.pageText : 'this is a small blurb about us';
+        const pageText = 'this is a small blurb about us';
         const adminInputDiv = this.state.adminEditing ? <textarea value={this.state.pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea> : '';
         return (
           <div className={styles.home}>
@@ -74,7 +75,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <Tabs selected={this.state.activeTab}>
+            <Tabs selected={this.state.activeTab ? this.state.activeTab : 0}>
                 <Pane label="Home">
                     <div className="home-page-contents">
                         {adminInputDiv}
