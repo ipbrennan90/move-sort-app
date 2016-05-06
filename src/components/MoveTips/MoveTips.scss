@@ -5,6 +5,7 @@
 	border-radius: 4px;
 	margin-bottom: 2px;
 	height: 2.5em;
+    transition: background-color 300ms ease;
     &:hover {
       background-color: #00746d;
     }
