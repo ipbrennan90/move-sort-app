@@ -64,7 +64,12 @@ class MoveTips extends Component {
 
     changeTab(index, event) {
         event.preventDefault();
-        this.setState({ activeTip: index, addTip: false, pageText: this.state.movingTips[index].content });
+        this.setState({
+            activeTip: index, addTip: false,
+            pageText: this.state.movingTips[index].content,
+            pageTitle: this.state.movingTips[index].name,
+            pageDate: this.state.movingTips[index].date
+        });
     }
 
     editPage(event) {
@@ -152,6 +157,8 @@ class MoveTips extends Component {
 
     render() {
         const pageText = this.state.pageText;
+        const pageTitle = this.state.pageTitle;
+        const pageDate = this.state.pageDate;
         const adminInputDiv = this._renderAdminInput(pageText);
         const homePageContentsStyle = this.state.addTip || this.state.adminEditing ? 'hidden' : 'home-page-contents-container faq visible';
         return (
@@ -163,6 +170,8 @@ class MoveTips extends Component {
                     </div>
                     <div className="home-page-contents faq">
                         {adminInputDiv}
+                        <h3>{pageTitle}</h3>
+                        <p>{pageDate}</p>
                         <div className={homePageContentsStyle}>
                             <p onClick={this.toggleEdit.bind(this)}>{pageText}</p>
                         </div>
