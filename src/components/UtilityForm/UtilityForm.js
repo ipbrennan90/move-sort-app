@@ -21,8 +21,8 @@ export default class UtilityForm extends Component {
         this.refs.logoPng.className = 'utility-form__logo logo-visible';
     }
 
-    submitForm() {
-        const utilityFlowArray = ['Details', 'Gas', 'Electric', 'Television', 'Water']
+    submitForm(event) {
+        event.preventDefault();
     }
     render() {
         const { formLogo } = this.props;
