@@ -11,6 +11,16 @@ export default class UtilityForm extends Component {
         };
     }
 
+    componentDidMount() {
+        this.refs.logoPng.className = 'utility-form__logo logo-visible';
+    }
+
+    changeImage() {
+        console.log('called');
+        this.refs.logoPng.className = 'utility-form__logo logo-hidden';
+        this.refs.logoPng.className = 'utility-form__logo logo-visible';
+    }
+
     submitForm(event) {
         event.preventDefault();
     }
