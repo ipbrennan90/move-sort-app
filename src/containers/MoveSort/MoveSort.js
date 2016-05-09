@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from 'react-redux';
 import Pane from '../../components/Pane/Pane';
 import Tabs from '../../components/Tabs/Tabs';
 import UtilityForm from '../../components/UtilityForm/UtilityForm';
@@ -10,8 +9,8 @@ import { selectTab } from '../../actions/index';
 
 class MoveSort extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.editPage = this.editPage.bind(this);
         this.toggleEdit = this.toggleEdit.bind(this);
         this.changeTab = this.changeTab.bind(this);
@@ -174,8 +173,5 @@ MoveSort.contextTypes = {
     router: React.PropTypes.object
 };
 
-function mapStateToProps(state) {
-    return { tab: state.list.tab };
-}
 
-export default connect(mapStateToProps)(MoveSort);
+export default MoveSort;
