@@ -12,6 +12,6 @@ export default(
         <Route path='/about' component={About}/>
         <Route path='/list' component={ListPage}/>
         <Route path='/home' component={Home}/>
-		<Route path='/sort-your-move' component={MoveSort}/>
+		// <Route path='/sort-your-move' component={MoveSort}/>
     </Route>
 );
