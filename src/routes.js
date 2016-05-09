@@ -4,7 +4,7 @@ import App from './containers/App';
 import About from './components/About';
 import ListPage from './containers/ListPage';
 import Home from './containers/Home/Home';
-import MoveSort from './containers/Movesort/Movesort';
+// import MoveSort from './containers/Movesort/Movesort';
 
 export default(
     <Route path='/' component={App}>
