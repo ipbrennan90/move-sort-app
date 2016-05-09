@@ -1,0 +1,112 @@
+.utility-form__input {
+    background: none;
+    border: 1.5px solid white;
+    border-radius: 15px;
+    width: 57%;
+    color: white;
+    text-align: center;
+    height: 25px;
+    margin: auto 3em;
+    margin-bottom: 3em;
+    &:hover {
+      background-color: #00746d;
+      color: black;
+    }
+    &:focus {
+        background-color:rgba(0, 0, 0, 0);
+    }
+}
+
+.utility-form__logo {
+    display: block;
+    height: 9em;
+    margin: auto auto 2em 0;
+    img {
+        height: 100%
+    }
+}
+
+.logo-visible {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.logo-hidden {
+    opacity: 0;
+}
+
+.utility-form__input[placholder] {
+    color: white;
+    text-align: center;
+    &:hover {
+      color: black;
+    }
+}
+
+
+.utility-form {
+    width: 80%;
+    float: left;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+input:-moz-placeholder {
+    color: white;
+    &:hover {
+      color: black;
+    }
+}
+
+::-webkit-input-placeholder {
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+:-ms-input-placeholder {
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+.submit-button {
+    width: 57%;
+    margin: auto;
+	background: white;
+	border: none;
+	border-radius: 15px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    &:hover {
+      background-color: #00746d;
+    }
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container__label {
+    position: absolute;
+    margin-left: 3.5em;
+    margin-top: 6px;
+    color: white;
+    font-size: 12px;
+}

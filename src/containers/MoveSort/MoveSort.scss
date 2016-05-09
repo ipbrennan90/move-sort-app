@@ -119,3 +119,75 @@
     width: 100%;
     resize: none;
 }
+
+.faq-button {
+	width: 100%;
+	background: white;
+	border: none;
+	border-radius: 4px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    &:hover {
+      background-color: #00746d;
+    }
+}
+
+.form-buttons {
+    float: left;
+    width: 13%;
+    padding-right: 2em;
+}
+
+.faq-button:focus {
+  background-color: #00746d;;
+}
+
+.faq-button:blur {
+  background-color: white;
+}
+.container {
+    height: 100%;
+    margin: 2em;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.tv-button {
+    width: 57%;
+    margin: 0 0 2em 0;
+	background: white;
+	border: none;
+	border-radius: 15px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    &:hover {
+      background-color: #00746d;
+    }
+    &:focus {
+      background-color: #00746d;
+    }
+    &:blur {
+      background-color: white;
+    }
+}
+
+.utility-form__header-text {
+    color:white;
+    text-shadow: 1px 4px 13px black;
+}

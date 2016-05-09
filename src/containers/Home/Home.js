@@ -11,8 +11,10 @@ import { selectTab } from '../../actions/index';
 
 class Home extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const { location } = this.props || null;
+        let queryTab;
         this.editPage = this.editPage.bind(this);
         this.toggleEdit = this.toggleEdit.bind(this);
         this.changeTab = this.changeTab.bind(this);
@@ -26,6 +28,11 @@ class Home extends Component {
             adminEditing: false,
             activeTab: 1
         };
+        if (location && location.query) {
+            queryTab = location.query.open;
+            this.state.activeTab = this.tabs[queryTab];
+            this.props.dispatch(selectTab(this.tabs[queryTab]));
+        }
     }
 
     editPage(event) {
@@ -48,12 +55,23 @@ class Home extends Component {
         console.log(this.state);
     }
 
+    startMove(event) {
+        event.preventDefault();
+        this.context.router.push('/sort-your-move');
+    }
+
     render() {
         const styles = require('./Home.scss');
-        // require the logo image both from client and server
+        const { location } = this.props;
         const logoImage = require('./logo.png');
         const pageText = 'this is a small blurb about us';
         const adminInputDiv = this.state.adminEditing ? <textarea value={this.state.pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea> : '';
+        let activeTab = 0;
+        console.log(location);
+        if (location && location.query) {
+            activeTab = this.tabs[location.query.open];
+            console.log(activeTab, location.query.open);
+        }
         return (
           <div className={styles.home}>
             <Helmet title="Home"/>
@@ -64,9 +82,7 @@ class Home extends Component {
                     <img src={logoImage}/>
                   </p>
                 </div>
-                <h1>Move Sort</h1>
-
-                <h2>Sorting Your Move For You</h2>
+                <h2>Settle In Sooner</h2>
 
                 <div className="home-button-container">
                   <button onClick={this.changeTab} name="home" className="btn-primary home-button">Home</button>
@@ -75,15 +91,15 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <Tabs selected={this.state.activeTab ? this.state.activeTab : 0}>
+            <Tabs selected={this.state.activeTab ? this.state.activeTab : activeTab}>
                 <Pane label="Home">
                     <div className="home-page-contents">
                         {adminInputDiv}
                         <h2 style={{ 'text-align': 'center' }}>Welcome to MoveSort</h2>
-                        <div className="home-page-contents-container" style={{ 'text-align': 'center' }}>
+                        <div className="home-page-contents-container" style={{ 'textAlign': 'center' }}>
                             <p onClick={this.toggleEdit}>{pageText}</p>
                         </div>
-                        <button className="faq-button" style={{ 'margin-top': '1em' }}>Start Move</button>
+                        <button className="faq-button" style={{ 'marginTop': '1em' }} onClick={this.startMove.bind(this)}>Start Move</button>
                     </div>
                 </Pane>
                 <Pane label="Moving Home Tips">
@@ -104,7 +120,12 @@ Home.propTypes = {
         React.PropTypes.element
     ]),
     dispatch: React.PropTypes.func.isRequired,
+    location: React.PropTypes.object,
     tab: React.PropTypes.number
+};
+
+Home.contextTypes = {
+    router: React.PropTypes.object
 };
 
 function mapStateToProps(state) {
