@@ -12,7 +12,6 @@ class Electric extends Component {
         super(props);
     }
 
-
     render() {
         const electricLogo = require('./Electricity.png');
         return (
@@ -20,10 +19,10 @@ class Electric extends Component {
                 <Helmet title="SortYourMove"/>
                 <Header />
                 <div className="container">
-                    <UtilityButtons />
+                    <UtilityButtons selected="electric" />
                 </div>
                 <div>
-                    <UtilityForm formLogo={electricLogo} />
+                    <UtilityForm formLogo={electricLogo} formNext="gas" />
                 </div>
             </div>
         );

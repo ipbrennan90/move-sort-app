@@ -9,7 +9,14 @@ class Television extends Component {
 
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.context.router.push('sort-your-move/water');
+    }
+
 
     componentDidMount() {
         this.refs.logoPng.className = 'utility-form__logo logo-visible';
@@ -28,7 +35,7 @@ class Television extends Component {
                 <Helmet title="SortYourMove"/>
                 <Header />
                 <div className="container">
-                    <UtilityButtons />
+                    <UtilityButtons selected="television"/>
                 </div>
                 <div>
                     <div className="utility-form">
@@ -39,7 +46,7 @@ class Television extends Component {
                         <button className="tv-button">Cancel TV License</button>
                         <button className="tv-button">Not Needed</button>
                         <button className="tv-button">Need TV License</button>
-                        <button className="submit-button">Submit</button>
+                        <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
                     </div>
                 </div>
             </div>

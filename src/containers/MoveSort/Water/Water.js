@@ -20,7 +20,7 @@ class Water extends Component {
                 <Helmet title="SortYourMove"/>
                 <Header />
                 <div className="container">
-                    <UtilityButtons />
+                    <UtilityButtons selected="water"/>
                 </div>
                 <div>
                     <UtilityForm formLogo={waterLogo} />

@@ -5,9 +5,10 @@ export default class UtilityForm extends Component {
 
     constructor(props) {
         super(props);
-        const { formFor } = this.props;
+        const { formNext } = this.props;
+        this.submitForm = this.submitForm.bind(this);
         this.state = {
-            formFor
+            formNext
         };
     }
 
@@ -22,7 +23,9 @@ export default class UtilityForm extends Component {
     }
 
     submitForm(event) {
+        const { formNext } = this.props;
         event.preventDefault();
+        this.context.router.push('sort-your-move/' + formNext);
     }
     render() {
         const { formLogo } = this.props;
@@ -55,6 +58,10 @@ export default class UtilityForm extends Component {
 
 
 UtilityForm.propTypes = {
-    formFor: React.PropTypes.string,
-    formLogo: React.PropTypes.string
+    formLogo: React.PropTypes.string,
+    formNext: React.PropTypes.string
+};
+
+UtilityForm.contextTypes = {
+    router: React.PropTypes.object
 };

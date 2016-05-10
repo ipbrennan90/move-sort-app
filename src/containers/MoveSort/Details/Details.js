@@ -9,6 +9,12 @@ class Details extends Component {
 
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.context.router.push('sort-your-move/electric');
     }
 
 
@@ -46,7 +52,7 @@ class Details extends Component {
                         <div className="input-container">
                             <span className="input-container__label">Move Date:</span><input type="date" className="utility-form__input"></input>
                         </div>
-                        <button className="submit-button">Submit</button>
+                        <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
                     </form>
                 </div>
             </div>

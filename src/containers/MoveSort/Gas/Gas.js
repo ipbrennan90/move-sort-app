@@ -12,7 +12,6 @@ class Gas extends Component {
         super(props);
     }
 
-
     render() {
         const gasLogo = require('./Gas.png');
         return (
@@ -20,10 +19,10 @@ class Gas extends Component {
                 <Helmet title="SortYourMove"/>
                 <Header />
                 <div className="container">
-                    <UtilityButtons />
+                    <UtilityButtons selected="gas" />
                 </div>
                 <div>
-                    <UtilityForm formLogo={gasLogo} />
+                    <UtilityForm formLogo={gasLogo} formNext="television" />
                 </div>
             </div>
         );
