@@ -44,6 +44,10 @@ Header.propTypes = {
     faqs: React.PropTypes.array
 };
 
+Header.contextTypes = {
+    router: React.PropTypes.object
+};
+
 function mapStateToProps(state) {
     return { faqs: state.list.faqs };
 }
