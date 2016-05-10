@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import Pane from '../../components/Pane/Pane';
 import Tabs from '../../components/Tabs/Tabs';
+import Header from '../../components/Header/Header';
 import UtilityForm from '../../components/UtilityForm/UtilityForm';
+import UtilityButtons from '../../components/UtilityButtons/UtilityButtons';
 import './MoveSort.scss';
 import { selectTab } from '../../actions/index';
 import { connect } from 'react-redux';
@@ -64,77 +66,14 @@ class MoveSort extends Component {
     render() {
         const styles = require('./MoveSort.scss');
         const waterLogo = require('./Water.png');
-        const gasLogo = require('./Gas.png');
-        const electricLogo = require('./Electricity.png');
         const TVLogo = require('./TV.png');
-        const logoImage = require('./logo.png');
         return (
             <div className={styles.home}>
                 <Helmet title="SortYourMove"/>
-                <div className="masthead">
-                  <div className="container">
-                    <div className="logo">
-                      <p>
-                        <img src={logoImage}/>
-                      </p>
-                    </div>
-                    <h2>Settle In Sooner</h2>
-
-                    <div className="home-button-container">
-                      <button onClick={this.changePage} name="home" className="btn-primary home-button">Home</button>
-                      <button onClick={this.changePage} name="movingTips" className="btn-primary home-button">Moving Home Tips</button>
-                      <button onClick={this.changePage} name="FAQs" className="btn-primary home-button">FAQs</button>
-                    </div>
-                  </div>
-                </div>
+                <Header />
                 <div className="container">
-                    <div className="form-buttons">
-                      <button onClick={this.changeTab} name="Details" className="faq-button">Details</button>
-                      <button onClick={this.changeTab} name="Electric" className="faq-button">Electric</button>
-                      <button onClick={this.changeTab} name="Gas" className="faq-button">Gas</button>
-                      <button onClick={this.changeTab} name="Television" className="faq-button">Television</button>
-                      <button onClick={this.changeTab} name="Water" className="faq-button">Water</button>
-                    </div>
+                    <UtilityButtons />
                     <Tabs style={{ 'height': '100%' }} selected={this.state.activeTab ? this.state.activeTab : 0}>
-                        <Pane label="Details">
-                            <form className="utility-form">
-                                <div className="utility-form__header">
-                                    <h1 className="utility-form__header-text">Your Details</h1>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Name:</span><input type="text" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">DOB:</span><input type="date" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Email:</span><input type="text" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Phone:</span><input type="text" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Move From:</span><input type="text" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Move To:</span><input type="text" className="utility-form__input"></input>
-                                </div>
-                                <div className="input-container">
-                                    <span className="input-container__label">Move Date:</span><input type="date" className="utility-form__input"></input>
-                                </div>
-                                <button className="submit-button" onClick={this.submitForm.bind(this)}>Submit</button>
-                            </form>
-                        </Pane>
-                        <Pane label="Electric">
-                            <div>
-                                <UtilityForm formLogo={electricLogo} />
-                            </div>
-                        </Pane>
-                        <Pane label="Gas">
-                            <div>
-                                <UtilityForm formLogo={gasLogo} />
-                            </div>
-                        </Pane>
                         <Pane label="Television">
                             <div>
                                 <div className="utility-form">
