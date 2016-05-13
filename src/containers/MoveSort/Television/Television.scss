@@ -1,0 +1,50 @@
+@import "../../../theme/variables.scss";
+
+.tv-button {
+	width: 57%;
+	background: gray;
+	color: white;
+	border: $move-sort-base 2px solid;
+    border-radius: 15px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    margin-bottom: 2em;
+    &:hover {
+      background-color: #00746d;
+    }
+}
+
+.tv-button:focus {
+  background-color: #00746d;;
+}
+
+.tv-button.selected {
+  background-color: #00746d;;
+}
+
+.tv-button:blur {
+  background-color: gray;
+}
+
+.submit-button {
+    width: 57%;
+    margin: auto;
+    color: white;
+	background: gray;
+	border: none;
+	border-radius: 15px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    &:hover {
+      background-color: #00746d;
+    }
+}
+
+.utility-form__logo {
+    display: block;
+    height: 9em;
+    margin: auto auto 2em 0;
+    img {
+        height: 100%
+    }
+}

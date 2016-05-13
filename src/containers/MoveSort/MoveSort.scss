@@ -9,3 +9,120 @@ html, body {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
 }
+.utility-form__header-text {
+    color: $move-sort-base;
+    text-shadow: 1px 1px 8px gray;
+}
+.utility-form__input {
+    background: none;
+    border: 1.5px solid $move-sort-base;
+    border-radius: 15px;
+    width: 57%;
+    color: $move-sort-base;
+    text-align: center;
+    height: 25px;
+    margin: auto 3em;
+    margin-bottom: 3em;
+    &:hover {
+      background-color: #00746d;
+      color: white;
+    }
+    &:focus {
+        background-color:rgba(0, 0, 0, 0);
+    }
+}
+
+.utility-form__logo {
+    display: block;
+    height: 9em;
+    margin: auto auto 2em 0;
+    img {
+        height: 100%
+    }
+}
+
+.logo-visible {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.logo-hidden {
+    opacity: 0;
+}
+
+.utility-form__input[placeholder] {
+    color: $move-sort-base;
+    text-align: center;
+    &:hover {
+      color: black;
+    }
+}
+
+
+.utility-form {
+    width: 80%;
+    float: left;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+input:-moz-placeholder {
+    color: white;
+    &:hover {
+      color: black;
+    }
+}
+
+::-webkit-input-placeholder {
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+:-ms-input-placeholder {
+   color: white;
+   &:hover {
+     color: black;
+   }
+}
+
+.submit-button {
+    width: 57%;
+    margin: auto;
+    color: white;
+	background: gray;
+	border: none;
+	border-radius: 15px;
+	height: 2.5em;
+    transition: background-color 300ms ease;
+    &:hover {
+      background-color: #00746d;
+    }
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container__label {
+    position: absolute;
+    margin-left: 3.5em;
+    margin-top: 6px;
+    color: $move-sort-base;
+    font-size: 12px;
+}
