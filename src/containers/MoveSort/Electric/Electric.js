@@ -13,7 +13,7 @@ class Electric extends Component {
     }
 
     render() {
-        require('../Movesort.scss');
+        require('../MoveSort.scss');
         const electricLogo = require('./Electricity.png');
         return (
             <div className="home">

@@ -14,7 +14,7 @@ class Water extends Component {
 
 
     render() {
-        require('../Movesort.scss');
+        require('../MoveSort.scss');
         const waterLogo = require('./Water.png');
         return (
             <div className="home">

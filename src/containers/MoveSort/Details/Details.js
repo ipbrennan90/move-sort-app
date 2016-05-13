@@ -18,7 +18,7 @@ class Details extends Component {
     }
 
     render() {
-        require('../Movesort.scss');
+        require('../MoveSort.scss');
         require('./Details.scss');
         return (
             <div className="home">
