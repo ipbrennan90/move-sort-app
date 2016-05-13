@@ -29,6 +29,7 @@ class Television extends Component {
     }
 
     render() {
+        require('../Movesort.scss');
         const TVLogo = require('./TV.png');
         return (
             <div className="home">

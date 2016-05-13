@@ -5,7 +5,6 @@ import Pane from '../../components/Pane/Pane';
 import Tabs from '../../components/Tabs/Tabs';
 import Faq from '../../components/Faq/Faq';
 import MoveTips from '../../components/MoveTips/MoveTips';
-import './Home.scss';
 import { selectTab } from '../../actions/index';
 
 
@@ -32,6 +31,20 @@ class Home extends Component {
             queryTab = location.query.open;
             this.state.activeTab = this.tabs[queryTab];
             this.props.dispatch(selectTab(this.tabs[queryTab]));
+        }
+    }
+
+    componentWillMount() {
+        const items = document.getElementsByTagName('*');
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = '#00A79D';
+        }
+    }
+
+    componentWillUnmount() {
+        const items = document.getElementsByTagName('*');
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = 'white';
         }
     }
 
@@ -67,6 +80,7 @@ class Home extends Component {
         const pageText = 'this is a small blurb about us';
         const adminInputDiv = this.state.adminEditing ? <textarea value={this.state.pageText} className='admin-edit-text' onChange={this.editPage} rows="20"></textarea> : '';
         let activeTab = 0;
+        require('./Home.scss');
         console.log(location);
         if (location && location.query) {
             activeTab = this.tabs[location.query.open];

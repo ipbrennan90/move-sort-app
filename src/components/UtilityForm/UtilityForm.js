@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-require('./UtilityForm.scss');
+
 
 export default class UtilityForm extends Component {
 
@@ -28,6 +28,7 @@ export default class UtilityForm extends Component {
         this.context.router.push('sort-your-move/' + formNext);
     }
     render() {
+        require('./UtilityForm.scss');
         const { formLogo } = this.props;
 
         return (

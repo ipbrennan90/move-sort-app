@@ -6,16 +6,16 @@ class UtilityButtons extends Component {
         super(props);
         this.changeTab = this.changeTab.bind(this);
         this.state = {
-            details: 'faq-button selected',
-            electric: 'faq-button',
-            gas: 'faq-button',
-            television: 'faq-button',
-            water: 'faq-button'
+            details: 'utility-button selected',
+            electric: 'utility-button',
+            gas: 'utility-button',
+            television: 'utility-button',
+            water: 'utility-button'
         };
 
         if (this.props.selected) {
-            this.state.details = 'faq-button';
-            this.state[this.props.selected] = 'faq-button selected';
+            this.state.details = 'utility-button';
+            this.state[this.props.selected] = 'utility-button selected';
         }
     }
 
@@ -26,9 +26,9 @@ class UtilityButtons extends Component {
         event.preventDefault();
         for (const button in currentState) {
             if (button === tabName) {
-                currentState[button] = 'faq-button selected';
+                currentState[button] = 'utility-button selected';
             } else {
-                currentState[button] = 'faq-button';
+                currentState[button] = 'utility-button';
             }
         }
         this.setState(currentState);
@@ -37,6 +37,7 @@ class UtilityButtons extends Component {
 
 
     render() {
+        require('./UtilityButtons.scss');
         return (
             <div className="form-buttons">
               <button onClick={this.changeTab} name="details" className={this.state.details}>Details</button>

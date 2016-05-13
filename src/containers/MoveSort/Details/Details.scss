@@ -1,4 +1,8 @@
-@import "../../theme/variables.scss";
+@import "../../../theme/variables.scss";
+.utility-form__header-text {
+    color: $move-sort-base;
+    text-shadow: 1px 1px 8px gray;
+}
 .utility-form__input {
     background: none;
     border: 1.5px solid $move-sort-base;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class Header extends Component {
     constructor(props) {
@@ -28,9 +29,9 @@ class Header extends Component {
                 <h2>Settle In Sooner</h2>
 
                 <div className="home-button-container">
-                  <button onClick={this.changePage} name="home" className="btn-primary home-button">Home</button>
-                  <button onClick={this.changePage} name="movingTips" className="btn-primary home-button">Moving Home Tips</button>
-                  <button onClick={this.changePage} name="FAQs" className="btn-primary home-button">FAQs</button>
+                  <Link to="/home?open=home"><button className="btn-primary home-button">Home</button></Link>
+                  <Link to="/home?open=movingTips"><button className="btn-primary home-button">Moving Home Tips</button></Link>
+                  <Link to="/home?open=FAQs"><button className="btn-primary home-button">FAQs</button></Link>
                 </div>
               </div>
             </div>

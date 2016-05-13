@@ -13,6 +13,7 @@ class Gas extends Component {
     }
 
     render() {
+        require('../Movesort.scss');
         const gasLogo = require('./Gas.png');
         return (
             <div className="home">

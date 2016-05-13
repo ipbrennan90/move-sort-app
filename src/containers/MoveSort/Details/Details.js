@@ -17,8 +17,9 @@ class Details extends Component {
         this.context.router.push('sort-your-move/electric');
     }
 
-
     render() {
+        require('../Movesort.scss');
+        require('./Details.scss');
         return (
             <div className="home">
                 <Helmet title="SortYourMove"/>
